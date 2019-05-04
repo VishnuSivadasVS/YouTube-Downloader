@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1498849244",
+    "firebase_url": "https://downloader-f2796.firebaseio.com",
+    "project_id": "downloader-f2796",
+    "storage_bucket": "downloader-f2796.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1498849244:android:018abe23d7818172",
+        "android_client_info": {
+          "package_name": "com.codeseasy.youtubedownloader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1498849244-laqhr8arupm7369nfc49ajl7kmff8tf3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codeseasy.youtubedownloader",
+            "certificate_hash": "aa6fcf5e941545337e4c5b1a17bc20925356d88d"
+          }
+        },
+        {
+          "client_id": "1498849244-njh4qfkjdo2i3dvnuivk8l56o2gabkmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhFbfGko7EmrKRFcWJizkTv2eZHplLWk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1498849244-njh4qfkjdo2i3dvnuivk8l56o2gabkmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

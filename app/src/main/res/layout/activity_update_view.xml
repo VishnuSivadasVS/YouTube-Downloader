@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".UpdateView">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/updateheading"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/ranchoregular"
+            android:layout_height="wrap_content"
+            android:text="YouTube Downloader Version "/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="10dp"
+android:fontFamily="@font/aliceregular"
+                    android:id="@+id/updateappversion"
+                    android:layout_height="wrap_content"
+                    android:text="Version: "/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+android:fontFamily="@font/aliceregular"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/updatereleasedate"
+                    android:text="Released on: "/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="10dp"
+android:fontFamily="@font/aliceregular"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/updatecontactus"
+                    android:text="@string/contact_us"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/aliceregular"
+                    android:id="@+id/developerupdate"
+                    android:text="@string/developer_vishnu_update"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:id="@+id/updateviewdetails"
+            android:text="*Fetching data..."
+            android:fontFamily="@font/aliceregular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            <Button
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:id="@+id/updatedownloadbutton"
+                android:layout_width="wrap_content"
+                android:text="Download"
+                android:textSize="12dp"
+                android:fontFamily="@font/aliceregular"
+                android:onClick="buttondownloadupdate"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
