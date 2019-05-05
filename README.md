@@ -1,6 +1,6 @@
 # YouTube Downloader
 
-Download Function, Download URL is fetched.
+**Download Function, Download URL is fetched.
 
 ``` 
 public void YTDownload(final int itag) {
@@ -25,5 +25,16 @@ public void YTDownload(final int itag) {
             }
         };
         youTubeUriExtractor.execute(VideoURLDownload);
+    }
+```
+
+**onClick for a Button View (Download in Normal Quality)
+
+```
+ public void ytvdownload(View view) {
+        youTubeURL = editText.getText().toString();
+        if (youTubeURL.contains("http"))
+        YouTubeVideoDownloadF(18);
+        else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
     }
 ```
