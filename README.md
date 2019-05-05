@@ -31,10 +31,21 @@ public void YTDownload(final int itag) {
 **onClick for a Button View (Download in Normal Quality)**
 
 ```
- public void ytvdownload(View view) {
+    public void ytvdownload(View view) {
         youTubeURL = editText.getText().toString();
         if (youTubeURL.contains("http"))
         YouTubeVideoDownloadF(18);
+        else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
+    }
+```
+
+**onClick for a Button View (Download in HD Quality)**
+_This option could crash sometimes_
+```
+    public void ytvdownloadhd(View view) {
+        youTubeURL = editText.getText().toString();
+        if (youTubeURL.contains("http"))
+        YouTubeVideoDownloadF(22);
         else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
     }
 ```
