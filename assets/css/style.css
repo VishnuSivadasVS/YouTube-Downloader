@@ -5,3 +5,86 @@ small{display:none}
 #banner{background:#008088 !important;border-color:#393939 !important;right:0 !important}
 #banner #logo{right:46%}header
 {background-image:url(../background-head.jpg);background-repeat:no-repeat}
+.buttonDownload {
+outline: 0; border-radius:100px; border:none;
+	display: inline-block;
+	position: relative;
+	padding: 10px 25px;
+	color: white;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	font-family: sans-serif;
+	text-decoration: none;
+	font-size: 0.9em;
+	text-align: center;
+	text-indent: 15px;
+}
+
+.buttonDownload:hover {
+ box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	color: white;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 52%;
+}
+
+
+.buttonDownload:before {
+	width: 10px;
+	height: 2px;
+	border-style: solid;
+	border-width: 0 2px 2px;
+}
+
+
+.buttonDownload:after {
+	width: 0;
+	height: 0;
+	margin-left: 3px;
+	margin-top: -7px;
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: transparent;
+	border-top-color: inherit;
+	
+	animation: downloadArrow 2s linear infinite;
+	animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+	border-color: #fff;
+}
+
+.buttonDownload:hover:after {
+	border-top-color: #fff;
+	animation-play-state: running;
+}
+
+@keyframes downloadArrow {
+
+	0% {
+		margin-top: -7px;
+		opacity: 1;
+	}
+	
+	0.001% {
+		margin-top: -15px;
+		opacity: 0;
+	}
+	
+	50% {
+		opacity: 1;
+	}
+	
+	100% {
+		margin-top: 0;
+		opacity: 0;
+	}
+}
+.color3{
+  background:linear-gradient(50deg,#61d8d6,#279e9b,#026a68)!important;
+}
