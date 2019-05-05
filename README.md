@@ -54,6 +54,8 @@ _This option could crash sometimes_
 ```
 
 **Most important Gradle File**
-`implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'`
+`
+implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'
+`
 
 >Created By [Vishnu Sivadas](https://www.vishnusivadas.com)
