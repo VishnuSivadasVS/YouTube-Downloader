@@ -1,8 +1,9 @@
 # YouTube Downloader
 
 Download Function, Download URL is fetched.
-```
- public void YTDownload(final int itag) {
+
+``` 
+public void YTDownload(final int itag) {
         String VideoURLDownload = youTubeURL;
         @SuppressLint("StaticFieldLeak") YouTubeUriExtractor youTubeUriExtractor = new YouTubeUriExtractor(this) {
             @Override
@@ -25,4 +26,4 @@ Download Function, Download URL is fetched.
         };
         youTubeUriExtractor.execute(VideoURLDownload);
     }
-    ```
+```
