@@ -1,6 +1,6 @@
 # YouTube Downloader
 
-**Download Function, Download URL is fetched.
+**Download Function, Download URL is fetched.**
 
 ``` 
 public void YTDownload(final int itag) {
@@ -28,7 +28,7 @@ public void YTDownload(final int itag) {
     }
 ```
 
-**onClick for a Button View (Download in Normal Quality)
+**onClick for a Button View (Download in Normal Quality)**
 
 ```
  public void ytvdownload(View view) {
