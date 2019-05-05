@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>YouTube Downloader | YouTube-Downloader</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="YouTube Downloader" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="YouTube Downloader, an open source Android Application that allows you to download videos from YouTube." />
+<meta property="og:description" content="YouTube Downloader, an open source Android Application that allows you to download videos from YouTube." />
+<link rel="canonical" href="http://youtubedownloader.codeseasy.com/" />
+<meta property="og:url" content="http://youtubedownloader.codeseasy.com/" />
+<meta property="og:site_name" content="YouTube-Downloader" />
+<script type="application/ld+json">
+{"@type":"WebSite","url":"http://youtubedownloader.codeseasy.com/","headline":"YouTube Downloader","name":"YouTube-Downloader","description":"YouTube Downloader, an open source Android Application that allows you to download videos from YouTube.","@context":"http://schema.org"}</script>
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+<script src="/assets/js/main.js"></script>
+<!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    <![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+<header>
+<h1>YouTube-Downloader</h1>
+<p>YouTube Downloader, an open source Android Application that allows you to download videos from YouTube.</p>
+</header>
+<div id="banner">
+<span id="logo"></span>
+<a href="https://github.com/VishnuSivadasVS/YouTube-Downloader" class="button fork"><strong>View On GitHub</strong></a>
+</div>
+<div class="wrapper">
+<nav>
+<ul></ul>
+</nav>
+<section>
+<h1 id="youtube-downloader">YouTube Downloader</h1>
+<p>YouTube Downloader, an open source Android Application that allows you to download videos from YouTube.</p>
+<blockquote>
+<p><a href="https://www.codeseasy.com/download/youtube-downloader/">Download APK</a></p>
+</blockquote>
+<p><strong>Download Function, Download URL is fetched.</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void YTDownload(final int itag) {
+        String VideoURLDownload = youTubeURL;
+        @SuppressLint("StaticFieldLeak") YouTubeUriExtractor youTubeUriExtractor = new YouTubeUriExtractor(this) {
+            @Override
+            public void onUrisAvailable(String videoId, String videoTitle, SparseArray&lt;YtFile&gt; ytFiles) {
+                if ((ytFiles != null)) {
+                    String downloadURL = ytFiles.get(itag).getUrl();
+                    Log.e("Download URL: ", downloadURL);
+
+                    if (downloadURL != null) {
+                        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadURL));
+                        request.setTitle(videoTitle);
+                        request.setDestinationInExternalPublicDir("/Downloads/YouTube-Downloader/", videoTitle + ".mp4");
+                        if (downloadManager != null) {
+                            downloadManager.enqueue(request);
+                        }
+                    }
+                } else Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+            }
+        };
+        youTubeUriExtractor.execute(VideoURLDownload);
+    }
+</code></pre></div></div>
+<p><strong>onClick for a Button View (Download in Normal Quality)</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    public void ytvdownload(View view) {
+        youTubeURL = editText.getText().toString();
+        if (youTubeURL.contains("http"))
+        YouTubeVideoDownloadF(18);
+        else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
+    }
+</code></pre></div></div>
+<p><strong>onClick for a Button View (Download in HD Quality)</strong>
+<em>This option could crash sometimes</em></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    public void ytvdownloadhd(View view) {
+        youTubeURL = editText.getText().toString();
+        if (youTubeURL.contains("http"))
+        YouTubeVideoDownloadF(22);
+        else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
+    }
+</code></pre></div></div>
+<p><strong>Most important Gradle File</strong>
+`
+implementation ‘com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT’
+`</p>
+<blockquote>
+<p>Created By <a href="https://www.vishnusivadas.com">Vishnu Sivadas</a></p>
+</blockquote>
+</section>
+<footer>
+<p>Project maintained by <a href="https://github.com/VishnuSivadasVS">VishnuSivadasVS</a></p>
+<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+</footer>
+</div>
+</body>
+</html>
