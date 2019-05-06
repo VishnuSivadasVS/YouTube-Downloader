@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
+    android:background="?attr/backgroundcolor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,6 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="?attr/textcolor1"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/ranchoregular"
         android:textSize="30dp"
@@ -23,6 +26,7 @@
             android:gravity="center_horizontal"
             android:fontFamily="@font/aliceregular"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textcolor2"
             android:text="Version 1.0"/>
     </LinearLayout>
 
@@ -35,6 +39,7 @@
     <android.support.v7.widget.CardView
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
+        app:cardBackgroundColor="?attr/cardbackground"
         android:layout_margin="10dp"
         android:layout_height="wrap_content" >
 
@@ -51,6 +56,9 @@
         android:singleLine="true"
         android:fontFamily="@font/aliceregular"
         android:imeOptions="actionDone"
+        android:textColor="?attr/textcolor2"
+        android:gravity="center_horizontal"
+        android:textColorHint="?attr/textcolor2"
         android:id="@+id/youtubevideourlenter"
         android:hint="@string/paste_youtube_video_url"
         tools:ignore="Autofill" />
@@ -59,10 +67,11 @@
                 android:orientation="horizontal"
                 android:gravity="center_horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="60dp" >
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0.0dip"
+        android:layout_weight="1.0"
+        android:layout_height="fill_parent"
         android:id="@+id/downloadbtn"
         android:textSize="12dp"
         android:onClick="ytvdownload"
@@ -74,10 +83,11 @@
                     android:layout_weight="1" />
             <Button
                 android:textSize="12dp"
+                android:layout_width="0.0dip"
+                android:layout_weight="1.0"
+                android:layout_height="fill_parent"
                 android:onClick="viewdownloadsbtn"
                 android:fontFamily="@font/aliceregular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/see_downloaded_videos"/>
             </LinearLayout>
             <LinearLayout
@@ -91,13 +101,13 @@
                     android:orientation="vertical"
                     android:padding="10dp"
                     android:layout_margin="2dp"
-                    android:background="#fff"
+                    android:background="?attr/cardbackground"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/downloadhdbtn"
                     android:textSize="12dp"
@@ -109,6 +119,7 @@
                     android:fontFamily="@font/aliceregular"
                     android:textSize="10dp"
                     android:layout_height="wrap_content"
+                    android:textColor="?attr/textcolor2"
                     android:text="In development (Could Crash Sometimes)"/>
                 </LinearLayout>
             </LinearLayout>
@@ -121,6 +132,7 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/aliceregular"
         android:layout_height="wrap_content"
+        android:textColor="?attr/textcolor2"
         android:id="@+id/createdby"
         android:layout_gravity="center_horizontal"
         android:text="@string/created_by"/>

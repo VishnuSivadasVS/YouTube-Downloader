@@ -6,4 +6,6 @@
     <string name="see_downloaded_videos">View Downloads</string>
     <string name="contact_us"><a href="mailto:mail@codeseasy.com">Contact Us</a></string>
     <string name="developer_vishnu_update">Developer: <a href="https://www.vishnusivadas.com">Vishnu Sivadas</a></string>
+    <string name="day_light">Day Light</string>
+    <string name="night_mode">Night Mode</string>
 </resources>

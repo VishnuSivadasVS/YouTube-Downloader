@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,8 +30,14 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     String WritePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     String ReadPermission = Manifest.permission.READ_EXTERNAL_STORAGE;
+    private SharedPref sharedpref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -102,5 +110,34 @@ public class MainActivity extends AppCompatActivity {
         if (youTubeURL.contains("http"))
         YouTubeVideoDownloadF(22);
         else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+        case R.id.day:
+            sharedpref.setNightModeState(true);
+            restartApp();
+            return(true);
+        case R.id.night:
+            sharedpref.setNightModeState(false);
+            restartApp();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
+    }
+
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }
