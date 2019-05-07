@@ -124,11 +124,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
         case R.id.day:
-            sharedpref.setNightModeState(true);
+            sharedpref.setNightModeState(false);
             restartApp();
             return(true);
         case R.id.night:
-            sharedpref.setNightModeState(false);
+            sharedpref.setNightModeState(true);
             restartApp();
             return(true);
     }
