@@ -57,29 +57,30 @@
                 android:layout_height="60dp" >
     <Button
         android:layout_width="0.0dip"
-        android:layout_weight="2.0"
+        android:layout_weight="3.0"
         android:layout_height="40dp"
         android:id="@+id/downloadbtn"
         android:paddingLeft="10dp"
+        android:paddingRight="5dp"
         android:background="?attr/buttoncolor"
         android:textColor="?attr/textcolor1"
         android:textSize="12dp"
         android:onClick="ytvdownload"
         android:fontFamily="@font/aliceregular"
         android:text="@string/download"
-        android:drawableLeft="@drawable/ic_download" />
+        android:drawableLeft="@drawable/download" />
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.5" />
             <Button
                 android:textSize="12dp"
                 android:layout_width="0.0dip"
-                android:layout_weight="2.2"
+                android:layout_weight="3.2"
                 android:layout_height="40dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="5dp"
-                android:drawableLeft="@drawable/ic_folder"
+                android:drawableLeft="@drawable/folder"
                 android:onClick="viewdownloadsbtn"
                 android:background="?attr/buttoncolor"
                 android:textColor="?attr/textcolor1"
@@ -108,7 +109,7 @@
                     android:id="@+id/downloadhdbtn"
                     android:background="?attr/buttoncolor"
                     android:textColor="?attr/textcolor1"
-                    android:drawableLeft="@drawable/ic_cloud_computing"
+                    android:drawableLeft="@drawable/cloud_computing"
                     android:paddingLeft="20dp"
                     android:textSize="12dp"
                     android:onClick="ytvdownloadhd"
@@ -224,7 +225,7 @@
                     android:visibility="visible"
                     android:textColor="?attr/textcolor1"
                     android:background="?attr/buttoncolor"
-                    android:drawableLeft="@drawable/ic_google_icon"
+                    android:drawableLeft="@drawable/google_icon"
                     android:drawablePadding="10dp"
                     android:text="@string/sign_out"/>
                     </LinearLayout>
