@@ -3,9 +3,13 @@ package com.codeseasy.youtubedownloader;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +39,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.io.File;
+
 import at.huber.youtubeExtractor.YouTubeUriExtractor;
 import at.huber.youtubeExtractor.YtFile;
 
@@ -144,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         String VideoURLDownload = youTubeURL;
         @SuppressLint("StaticFieldLeak") YouTubeUriExtractor youTubeUriExtractor = new YouTubeUriExtractor(this) {
             @Override
-            public void onUrisAvailable(String videoId, String videoTitle, SparseArray<YtFile> ytFiles) {
+            public void onUrisAvailable(String videoId, final String videoTitle, SparseArray<YtFile> ytFiles) {
                 if ((ytFiles != null)) {
                     String downloadURL = ytFiles.get(itag).getUrl();
                     Log.e("Download URL: ", downloadURL);
@@ -153,10 +160,34 @@ public class MainActivity extends AppCompatActivity {
                         DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
                         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadURL));
                         request.setTitle(videoTitle);
-                        request.setDestinationInExternalPublicDir("/Downloads/YouTube-Downloader/", videoTitle + ".mp4");
+                        request.setDestinationInExternalPublicDir("/Download/YouTube-Downloader/", videoTitle + ".mp4");
                         if (downloadManager != null) {
+                            Toast.makeText(getApplicationContext(),"Downloading...",Toast.LENGTH_SHORT).show();
                             downloadManager.enqueue(request);
                         }
+                        BroadcastReceiver onComplete = new BroadcastReceiver() {
+                            public void onReceive(Context ctxt, Intent intent) {
+                                Toast.makeText(getApplicationContext(),"Download Completed",Toast.LENGTH_SHORT).show();
+
+                                Uri selectedUri = Uri.parse(Environment.getExternalStorageDirectory() + "/Download/YouTube-Downloader/");
+                                Intent intentop = new Intent(Intent.ACTION_VIEW);
+                                intentop.setDataAndType(selectedUri, "resource/folder");
+
+                                if (intentop.resolveActivityInfo(getPackageManager(), 0) != null)
+                                {
+                                    startActivity(intentop);
+                                }
+                                else
+                                {
+                                    Toast.makeText(getApplicationContext(),"Saved on: Download/YouTube-Downloader",Toast.LENGTH_LONG).show();
+                                    restartApp();
+                                }
+                                unregisterReceiver(this);
+                                finish();
+                            }
+                        };
+                        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
                     }
                 } else Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
             }
