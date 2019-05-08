@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,11 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundcolor">#fcfcfc</item>
-        <item name="cardbackground">#ffffff</item>
+        <item name="backgroundcolor">#E6E6E6</item>
+        <item name="cardbackground">#F1F1F1</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/aliceregular</item>
         <item name="textcolor1">#000</item>
-        <item name="textcolor2">#313131</item>
-        <item name="buttoncolor">#999999</item>
+        <item name="textcolor2">#474747</item>
+        <item name="buttoncolor">#FFFFFF</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -27,6 +28,6 @@
         <item name="cardbackground">#292929</item>
         <item name="textcolor1">#B8B8B8</item>
         <item name="textcolor2">#5C5B5B</item>
-        <item name="buttoncolor">#3D3D3D</item>
+        <item name="buttoncolor">#666666</item>
     </style>
 </resources>

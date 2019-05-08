@@ -8,34 +8,21 @@
     android:background="?attr/backgroundcolor"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/textcolor1"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/ranchoregular"
-        android:textSize="30dp"
-        android:text="YouTube Downloader"
-        android:gravity="center_horizontal"/>
-        <TextView
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center_horizontal"
-            android:fontFamily="@font/aliceregular"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/textcolor2"
-            android:text="Version 1.0"/>
-    </LinearLayout>
-
-
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <LinearLayout
         android:layout_marginTop="30dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:padding="5dp"
+        android:layout_height="wrap_content" >
     <android.support.v7.widget.CardView
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
@@ -71,12 +58,16 @@
     <Button
         android:layout_width="0.0dip"
         android:layout_weight="2.0"
-        android:layout_height="fill_parent"
+        android:layout_height="40dp"
         android:id="@+id/downloadbtn"
+        android:paddingLeft="10dp"
+        android:background="?attr/buttoncolor"
+        android:textColor="?attr/textcolor1"
         android:textSize="12dp"
         android:onClick="ytvdownload"
         android:fontFamily="@font/aliceregular"
-        android:text="@string/download"/>
+        android:text="@string/download"
+        android:drawableLeft="@drawable/ic_download" />
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -84,9 +75,14 @@
             <Button
                 android:textSize="12dp"
                 android:layout_width="0.0dip"
-                android:layout_weight="2.0"
-                android:layout_height="fill_parent"
+                android:layout_weight="2.2"
+                android:layout_height="40dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+                android:drawableLeft="@drawable/ic_folder"
                 android:onClick="viewdownloadsbtn"
+                android:background="?attr/buttoncolor"
+                android:textColor="?attr/textcolor1"
                 android:fontFamily="@font/aliceregular"
                 android:text="@string/see_downloaded_videos"/>
             </LinearLayout>
@@ -107,9 +103,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
                 <Button
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
                     android:id="@+id/downloadhdbtn"
+                    android:background="?attr/buttoncolor"
+                    android:textColor="?attr/textcolor1"
+                    android:drawableLeft="@drawable/ic_cloud_computing"
+                    android:paddingLeft="20dp"
                     android:textSize="12dp"
                     android:onClick="ytvdownloadhd"
                     android:fontFamily="@font/aliceregular"
@@ -118,25 +118,121 @@
                     android:layout_width="wrap_content"
                     android:fontFamily="@font/aliceregular"
                     android:textSize="10dp"
+                    android:layout_marginTop="2dp"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/textcolor2"
-                    android:text="In development (Could Crash Sometimes)"/>
+                    android:text="To unlock, Upgrade to Pro"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:fontFamily="@font/aliceregular"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/textcolor2"
-        android:id="@+id/createdby"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/created_by"/>
     </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:id="@+id/upgradebox"
+                android:layout_height="match_parent" >
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="?attr/cardbackground"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="?attr/textcolor1"
+                    android:padding="5dp"
+                    android:textSize="17dp"
+                    android:text="@string/upgrade_to_pro"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:padding="5dp"
+                    android:textColor="?attr/textcolor2"
+                    android:textAlignment="center"
+                    android:text="Unlock more features for free, sign in with Google and Unlock Download in HD Option"/>
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/sign_in_button"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:visibility="gone"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:id="@+id/signoutbox"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="?attr/cardbackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:id="@+id/username"
+                    android:textColor="?attr/textcolor1"
+                    android:layout_marginLeft="10dp"
+                    android:text="Logged in as: "/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/sign_out_button"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="9dp"
+                    android:visibility="visible"
+                    android:textColor="?attr/textcolor1"
+                    android:background="?attr/buttoncolor"
+                    android:drawableLeft="@drawable/ic_google_icon"
+                    android:drawablePadding="10dp"
+                    android:text="@string/sign_out"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </LinearLayout>

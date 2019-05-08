@@ -89,6 +89,7 @@ android:layout_marginLeft="10dp"
             android:layout_margin="10dp"
             android:id="@+id/updateviewdetails"
             android:text="*Fetching data..."
+            android:autoLink="all"
             android:fontFamily="@font/aliceregular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

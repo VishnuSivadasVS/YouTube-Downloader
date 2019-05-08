@@ -27,7 +27,7 @@ public class UpdateService extends Service {
 
                 if (response != null) {
 
-                    boolean resp = response.contains("1.0");
+                    boolean resp = response.contains("1.1");
 
                     if (!resp) {
                         //New Update Available
