@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "1498849244-laqhr8arupm7369nfc49ajl7kmff8tf3.apps.googleusercontent.com",
+          "client_id": "1498849244-42ok5tpg4ltjmd50h0euhooit5aqvvk0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.codeseasy.youtubedownloader",
-            "certificate_hash": "aa6fcf5e941545337e4c5b1a17bc20925356d88d"
+            "certificate_hash": "d9d715bbdcf2903a9845e71fdf3d67c674b04e5c"
+          }
+        },
+        {
+          "client_id": "1498849244-7dlkqc7heei0ida72kt7pkvott2cpm3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codeseasy.youtubedownloader",
+            "certificate_hash": "49dd9e5a8b3cb41f9f052293b9f8eb772ccc7400"
           }
         },
         {

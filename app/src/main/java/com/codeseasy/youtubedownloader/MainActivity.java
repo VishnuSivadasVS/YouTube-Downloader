@@ -10,11 +10,11 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
@@ -39,8 +39,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import java.io.File;
 
 import at.huber.youtubeExtractor.YouTubeUriExtractor;
 import at.huber.youtubeExtractor.YtFile;
@@ -143,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.checkSelfPermission(this, ReadPermission) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{WritePermission, ReadPermission}, 1);
         } else {
+
                 YTDownload(iTag);
         }
     }
@@ -155,44 +154,54 @@ public class MainActivity extends AppCompatActivity {
                 if ((ytFiles != null)) {
                     String downloadURL = ytFiles.get(itag).getUrl();
                     Log.e("Download URL: ", downloadURL);
-
-                    if (downloadURL != null) {
-                        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadURL));
-                        request.setTitle(videoTitle);
-                        request.setDestinationInExternalPublicDir("/Download/YouTube-Downloader/", videoTitle + ".mp4");
-                        if (downloadManager != null) {
-                            Toast.makeText(getApplicationContext(),"Downloading...",Toast.LENGTH_SHORT).show();
-                            downloadManager.enqueue(request);
-                        }
-                        BroadcastReceiver onComplete = new BroadcastReceiver() {
-                            public void onReceive(Context ctxt, Intent intent) {
-                                Toast.makeText(getApplicationContext(),"Download Completed",Toast.LENGTH_SHORT).show();
-
-                                Uri selectedUri = Uri.parse(Environment.getExternalStorageDirectory() + "/Download/YouTube-Downloader/");
-                                Intent intentop = new Intent(Intent.ACTION_VIEW);
-                                intentop.setDataAndType(selectedUri, "resource/folder");
-
-                                if (intentop.resolveActivityInfo(getPackageManager(), 0) != null)
-                                {
-                                    startActivity(intentop);
-                                }
-                                else
-                                {
-                                    Toast.makeText(getApplicationContext(),"Saved on: Download/YouTube-Downloader",Toast.LENGTH_LONG).show();
-                                    restartApp();
-                                }
-                                unregisterReceiver(this);
-                                finish();
-                            }
-                        };
-                        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-
+                    if(itag==18 || itag == 22) {
+                        String mp4=".mp4";
+                        DownloadManagingF(downloadURL, videoTitle,mp4);
+                    }else if (itag == 251){
+                        String mp3=".mp3";
+                        DownloadManagingF(downloadURL,videoTitle,mp3);
                     }
-                } else Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+
+                } else Toast.makeText(MainActivity.this, "Error With URL", Toast.LENGTH_LONG).show();
             }
         };
         youTubeUriExtractor.execute(VideoURLDownload);
+    }
+
+    public void DownloadManagingF(String downloadURL, String videoTitle,String extentiondwn){
+        if (downloadURL != null) {
+            DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadURL));
+            request.setTitle(videoTitle);
+            request.setDestinationInExternalPublicDir("/Download/YouTube-Downloader/", videoTitle + extentiondwn);
+            if (downloadManager != null) {
+                Toast.makeText(getApplicationContext(),"Downloading...",Toast.LENGTH_SHORT).show();
+                downloadManager.enqueue(request);
+            }
+            BroadcastReceiver onComplete = new BroadcastReceiver() {
+                public void onReceive(Context ctxt, Intent intent) {
+                    Toast.makeText(getApplicationContext(),"Download Completed",Toast.LENGTH_SHORT).show();
+
+                    Uri selectedUri = Uri.parse(Environment.getExternalStorageDirectory() + "/Download/YouTube-Downloader/");
+                    Intent intentop = new Intent(Intent.ACTION_VIEW);
+                    intentop.setDataAndType(selectedUri, "resource/folder");
+
+                    if (intentop.resolveActivityInfo(getPackageManager(), 0) != null)
+                    {
+                        startActivity(intentop);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"Saved on: Download/YouTube-Downloader",Toast.LENGTH_LONG).show();
+                        restartApp();
+                    }
+                    unregisterReceiver(this);
+                    finish();
+                }
+            };
+            registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
+        }
     }
 
     public void viewdownloadsbtn(View view) {
@@ -201,14 +210,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void ytvdownload(View view) {
         youTubeURL = editText.getText().toString();
-        if (youTubeURL.contains("http"))
-        YouTubeVideoDownloadF(18);
+        if (youTubeURL.contains("http")) {
+            YouTubeVideoDownloadF(18);
+        }
         else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
     }
 
     public void ytvdownloadhd(View view) {
         youTubeURL = editText.getText().toString();
-        if(mAuth.getCurrentUser() != null) {
+        if(mAuth.getCurrentUser() == null) {
             if (youTubeURL.contains("http"))
                 YouTubeVideoDownloadF(22);
             else Toast.makeText(this, "Enter URL First", Toast.LENGTH_LONG).show();
@@ -216,6 +226,21 @@ public class MainActivity extends AppCompatActivity {
         else {
             Toast.makeText(this, "Upgrade To Pro", Toast.LENGTH_LONG).show();
         }
+    }
+    public void ytvdownloadhdp(View view) {
+        youTubeURL = editText.getText().toString();
+        if (youTubeURL.contains("http")) {
+
+            YouTubeVideoDownloadF(140);
+        }
+        else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
+    }
+
+    public void ytvdownloadaudio(View view) {
+        youTubeURL = editText.getText().toString();
+        if (youTubeURL.contains("http"))
+            YouTubeVideoDownloadF(251);
+        else Toast.makeText(this,"Enter URL First",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -311,4 +336,6 @@ public class MainActivity extends AppCompatActivity {
             linearLayoutsignoutbox.setVisibility(View.VISIBLE);
         }
     }
+
+
 }
