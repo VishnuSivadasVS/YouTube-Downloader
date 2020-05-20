@@ -1,5 +1,5 @@
 # YouTube Downloader
-[![Vishnu Sivadas](https://www.vishnusivadas.com/github/codequality.svg?style=flat)](https://github.com/VishnuSivadasVS)
+[![Vishnu Sivadas](https://vishnusivadas.com/github/youtubedownloader-version.svg?style=flat)](https://github.com/VishnuSivadasVS)
 
 YouTube Downloader, an open source Android Application that allows you to download videos from YouTube.
 
